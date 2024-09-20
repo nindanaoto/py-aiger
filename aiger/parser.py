@@ -380,7 +380,7 @@ def parse(stream):
             lit2expr[lit] = reduce(A.aig.AndGate, nodes)
 
     return A.aig.AIG(
-        inputs=set(inputs),
+        inputs=list(inputs),
         node_map={n: lit2expr[lit] for n, lit in outputs.items()},
         latch_map={n: lit2expr[latch.input] for n, latch in latches.items()},
         latch2init={n: latch.init for n, latch in latches.items()},
